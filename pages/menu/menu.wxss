@@ -1,0 +1,45 @@
+page { background: #f4f5f7; }
+.container { padding: 40rpx; }
+.header { margin-bottom: 60rpx; }
+.greeting { font-size: 52rpx; font-weight: 900; color: #111827; display: block; margin-bottom: 12rpx; }
+.prompt { font-size: 28rpx; color: #6b7280; }
+
+.card-list { display: flex; flex-direction: column; gap: 32rpx; }
+.nav-card { 
+  background: #fff; 
+  padding: 40rpx 32rpx; 
+  border-radius: 32rpx; 
+  display: flex; 
+  align-items: center; 
+  box-shadow: 0 8rpx 24rpx rgba(0,0,0,0.04); 
+  transition: all 0.2s ease; 
+}
+.nav-card:active { transform: scale(0.98); background: #fafafa; }
+
+/* 边框色系 */
+.border-blue { border-left: 12rpx solid #3b82f6; }
+.border-green { border-left: 12rpx solid #10b981; }
+.border-purple { border-left: 12rpx solid #8b5cf6; }
+.border-orange { border-left: 12rpx solid #f59e0b; }
+
+.icon-bg { 
+  width: 96rpx; 
+  height: 96rpx; 
+  border-radius: 24rpx; 
+  display: flex; 
+  justify-content: center; 
+  align-items: center; 
+  font-size: 48rpx; 
+  margin-right: 32rpx; 
+}
+
+/* 背景色系 */
+.blue { background: #eff6ff; }
+.green { background: #ecfdf5; }
+.purple { background: #f5f3ff; }
+.orange { background: #fffbeb; }
+
+.card-content { flex: 1; display: flex; flex-direction: column; }
+.c-title { font-size: 34rpx; font-weight: bold; color: #1f2937; margin-bottom: 8rpx; }
+.c-desc { font-size: 24rpx; color: #6b7280; }
+.arrow { color: #d1d5db; font-weight: bold; font-size: 32rpx; }

@@ -1,0 +1,44 @@
+<view class="container">
+  <view class="header">
+    <text class="greeting">老师，辛苦了</text>
+    <text class="prompt">请选择需要 AI 介入的工作台</text>
+  </view>
+
+  <view class="card-list">
+    <view class="nav-card border-blue" bindtap="navTo" data-url="/pages/index/index?mode=teach">
+      <view class="icon-bg blue">🗺️</view>
+      <view class="card-content">
+        <text class="c-title">全栈地理备课</text>
+        <text class="c-desc">课前 / 课中 / 课后 / 教学反思</text>
+      </view>
+      <view class="arrow">></view>
+    </view>
+
+    <view class="nav-card border-green" bindtap="navTo" data-url="/pages/index/index?mode=news">
+      <view class="icon-bg green">📰</view>
+      <view class="card-content">
+        <text class="c-title">校园新闻审查</text>
+        <text class="c-desc">三审三校 / 涉疆涉台 / 地图规范</text>
+      </view>
+      <view class="arrow">></view>
+    </view>
+
+    <view class="nav-card border-purple" bindtap="navTo" data-url="/pages/excel/excel">
+      <view class="icon-bg purple">📊</view>
+      <view class="card-content">
+        <text class="c-title">Excel 登分助手</text>
+        <text class="c-desc">智能合表 / VLOOKUP 模拟 / 自动登分</text>
+      </view>
+      <view class="arrow">></view>
+    </view>
+
+    <view class="nav-card border-orange" bindtap="navTo" data-url="/pages/index/index?mode=admin">
+      <view class="icon-bg orange">📋</view>
+      <view class="card-content">
+        <text class="c-title">教研总结生成</text>
+        <text class="c-desc">会议记录 / 教研报告标准化</text>
+      </view>
+      <view class="arrow">></view>
+    </view>
+  </view>
+</view>

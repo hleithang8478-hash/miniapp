@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/login/login",
+    "pages/menu/menu",
+    "pages/index/index",
+    "pages/excel/excel"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "地理名师 AI 工作站",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f4f5f7"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,61 @@
+page { 
+  background: #f4f6f9; 
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+}
+.container { 
+  padding: 30rpx; 
+  display: block; 
+  width: 100%; 
+  box-sizing: border-box; 
+}
+
+/* 头部导航 */
+.header-zone { margin-bottom: 20rpx; }
+.mode-badge { display: inline-block; background: #1e293b; color: #fff; padding: 10rpx 24rpx; border-radius: 30rpx; font-size: 24rpx; font-weight: bold; margin-bottom: 24rpx; }
+
+/* Tabs 滚动区 */
+.lifecycle-tabs { white-space: nowrap; width: 100%; padding-bottom: 10rpx; }
+.tab-item { display: inline-block; background: #e2e8f0; color: #475569; font-size: 26rpx; padding: 16rpx 36rpx; border-radius: 100rpx; margin-right: 20rpx; transition: all 0.2s ease; }
+.tab-item.active { background: #3b82f6; color: #fff; font-weight: bold; box-shadow: 0 4rpx 12rpx rgba(59, 130, 246, 0.4); transform: scale(1.05); }
+
+/* 智能向导卡片 (新版核心) */
+.guide-card { background: #ffffff; border-radius: 20rpx; padding: 30rpx; margin-bottom: 40rpx; border-left: 10rpx solid #f59e0b; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.03); }
+.guide-title { font-size: 30rpx; font-weight: 800; color: #1e293b; margin-bottom: 16rpx; }
+.guide-item { font-size: 26rpx; line-height: 1.6; margin-bottom: 8rpx; }
+.text-blue { color: #2563eb; }
+.text-green { color: #059669; }
+
+/* 步骤标题 */
+.step-title { font-size: 28rpx; font-weight: 800; color: #475569; margin-bottom: 16rpx; margin-left: 8rpx; }
+
+/* 工作区容器 */
+.workspace-card { background: #fff; border-radius: 20rpx; box-shadow: 0 4rpx 16rpx rgba(0,0,0,0.04); overflow: hidden; margin-bottom: 40rpx; display: flex; flex-direction: column; width: 100%; box-sizing: border-box; border: 2rpx solid #e2e8f0; }
+
+/* 拍照按钮行 */
+.action-bar { display: flex; justify-content: space-between; align-items: center; padding: 24rpx; background: #f8fafc; border-bottom: 2rpx dashed #e2e8f0; }
+.cam-btn { margin: 0 !important; background: #3b82f6; color: #fff; font-size: 26rpx; border-radius: 100rpx; padding: 0 36rpx; height: 72rpx; line-height: 72rpx; display: flex; align-items: center; box-shadow: 0 4rpx 10rpx rgba(59,130,246,0.3); }
+.cam-icon { font-size: 32rpx; margin-right: 10rpx; }
+.page-counter { font-size: 24rpx; color: #10b981; font-weight: bold; background: #d1fae5; padding: 6rpx 16rpx; border-radius: 20rpx; }
+
+/* 文本编辑器 (修复宽度问题) */
+.content-editor { width: 100%; height: 360rpx; padding: 30rpx; box-sizing: border-box; font-size: 30rpx; line-height: 1.6; color: #1e293b; background: #ffffff; }
+
+/* 编辑器底部状态 */
+.editor-footer { display: flex; justify-content: space-between; padding: 16rpx 24rpx; background: #f8fafc; border-top: 2rpx solid #e2e8f0; font-size: 24rpx; }
+.word-count { color: #64748b; }
+.clear-btn { color: #ef4444; font-weight: bold; }
+
+/* 生成按钮 */
+.magic-btn { background: linear-gradient(135deg, #10b981, #059669); color: #fff; border-radius: 24rpx; height: 100rpx; display: flex; justify-content: center; align-items: center; font-size: 32rpx; font-weight: 800; box-shadow: 0 8rpx 20rpx rgba(16, 185, 129, 0.3); margin-bottom: 40rpx; width: 100% !important; }
+.magic-btn[disabled] { background: #cbd5e1 !important; color: #64748b !important; box-shadow: none; }
+.is-loading { opacity: 0.8; }
+
+/* 结果展示区 */
+.result-card { background: #fff; border-radius: 24rpx; padding: 30rpx; border-top: 12rpx solid #3b82f6; box-shadow: 0 10rpx 30rpx rgba(0,0,0,0.06); }
+.res-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 24rpx; padding-bottom: 16rpx; border-bottom: 2rpx dashed #e2e8f0; }
+.res-title { font-size: 32rpx; font-weight: 800; color: #1e293b; }
+.copy-btn { font-size: 24rpx; color: #2563eb; font-weight: bold; background: #eff6ff; padding: 10rpx 24rpx; border-radius: 100rpx; }
+.res-scroll { max-height: 800rpx; }
+.res-text { font-size: 30rpx; line-height: 1.8; color: #334155; }
+
+.bottom-space { height: 100rpx; }

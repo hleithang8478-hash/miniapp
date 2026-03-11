@@ -1,0 +1,21 @@
+<view class="login-wrapper">
+  <view class="login-card">
+    <view class="logo-box">🌍</view>
+    <text class="title">名师办公授权</text>
+    <text class="subtitle">地理教研组专属 AI 生产力工具</text>
+    
+    <view class="input-area">
+      <input 
+        class="pwd-input" 
+        password 
+        maxlength="4" 
+        placeholder="请输入 4 位 PIN 码" 
+        bindinput="onInput" 
+        value="{{password}}"
+      />
+    </view>
+    
+    <button class="login-btn" bindtap="checkLogin">验证身份</button>
+  </view>
+  <view class="footer-text">Data Security & DeepSeek Powered</view>
+</view>

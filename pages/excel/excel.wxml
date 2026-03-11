@@ -1,0 +1,88 @@
+<view class="container">
+  <view class="step-indicator">
+    <view class="node {{step >= 1 ? 'on' : ''}}">上传</view>
+    <view class="line {{step >= 2 ? 'on' : ''}}"></view>
+    <view class="node {{step >= 2 ? 'on' : ''}}">配置</view>
+    <view class="line {{step >= 3 ? 'on' : ''}}"></view>
+    <view class="node {{step >= 3 ? 'on' : ''}}">核对</view>
+  </view>
+
+  <view class="card shadow" wx:if="{{step == 1}}">
+    <view class="h1">第一步：上传 Excel</view>
+    <button class="btn-primary" bindtap="chooseFiles">选择文件 (总表+成绩表)</button>
+    <view class="file-box">
+      <view wx:for="{{files}}" wx:key="name" class="file-tag">📄 {{item.name}}</view>
+    </view>
+    <button class="btn-next" wx:if="{{files.length >= 2}}" bindtap="toStep2">解析完成，去配对</button>
+  </view>
+
+  <view class="card shadow" wx:if="{{step == 2}}">
+    <view class="h1">第二步：连线配置</view>
+    
+    <view class="form-item">
+      <text class="label">1. 指定【总表】（最终数据存入此表）</text>
+      <picker bindchange="mainTableChange" value="{{mainIndex}}" range="{{files}}" range-key="name">
+        <view class="picker-box">{{files[mainIndex].name}} ▽</view>
+      </picker>
+    </view>
+
+    <view class="form-item">
+      <text class="label">2. 关联列（用于匹配，如学号）</text>
+      <picker bindchange="keyFieldChange" range="{{currentMainHeaders}}">
+        <view class="picker-box">{{keyField || '点击选择主表关联列'}} ▽</view>
+      </picker>
+    </view>
+
+    <view class="mapping-section">
+      <view class="label">3. 字段搬运连线（把谁➔放到谁里）</view>
+      
+      <view class="mapping-item" wx:for="{{mappings}}" wx:key="index">
+        <view class="mapping-row">
+          <picker class="pick-file" bindchange="updateMapping" data-type="file" data-idx="{{index}}" range="{{files}}" range-key="name">
+            <view class="small-picker">{{files[item.sourceFileIdx].name}}</view>
+          </picker>
+          <text class="map-icon">的</text>
+          <picker class="pick-col" bindchange="updateMapping" data-type="source" data-idx="{{index}}" range="{{item.currentSourceHeaders}}">
+            <view class="small-picker active">{{item.source || '选择附表列'}}</view>
+          </picker>
+        </view>
+
+        <view class="mapping-row" style="margin-top:10rpx">
+          <text class="map-icon">➔ 搬运到总表的</text>
+          <picker class="pick-col" bindchange="updateMapping" data-type="target" data-idx="{{index}}" range="{{currentMainHeaders}}">
+            <view class="small-picker active">{{item.target || '选择总表目标列'}}</view>
+          </picker>
+          <text class="del-btn" bindtap="removeMapping" data-idx="{{index}}">✕</text>
+        </view>
+      </view>
+
+      <button class="add-btn" bindtap="addMapping">+ 增加一组连线</button>
+    </view>
+
+    <button class="btn-primary" bindtap="toStep3" style="margin-top:40rpx">生成预览</button>
+  </view>
+
+  <view wx:if="{{step == 3}}">
+    <view class="card shadow">
+      <view class="h1">第三步：核对预览</view>
+      <scroll-view scroll-x scroll-y class="grid-scroll">
+        <view class="table-grid">
+          <view class="tr head">
+            <view class="th" wx:for="{{previewHeaders}}" wx:key="*this">{{item}}</view>
+          </view>
+          <view class="tr" wx:for="{{previewList}}" wx:key="*this">
+            <view class="td" wx:for="{{previewHeaders}}" wx:for-item="h" wx:key="*this">{{item[h]}}</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+    <button class="btn-primary" bindtap="executeMerge">核对无误，确认导出</button>
+    <button class="btn-text" bindtap="restart">返回修改配置</button>
+  </view>
+
+  <view class="card shadow result-card" wx:if="{{step == 4}}">
+    <text class="icon-success">🎉</text>
+    <view class="h1">登分完成</view>
+    <button class="btn-primary" bindtap="exportResult">复制新总表</button>
+  </view>
+</view>
