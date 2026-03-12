@@ -1,0 +1,50 @@
+<view class="container">
+  <view class="upload-section" bindtap="chooseImage">
+    <image wx:if="{{imageUrl}}" src="{{imageUrl}}" mode="aspectFit" class="preview-img"></image>
+    <view wx:else class="upload-placeholder">
+      <view class="icon-camera">📷</view>
+      <text class="tips-main">点击拍照 或 上传试卷/错题截图</text>
+      <text class="tips-sub">支持多题同框，AI 自动切片分离</text>
+    </view>
+  </view>
+
+  <view class="loading-box" wx:if="{{isProcessing}}">
+    <view class="spinner"></view>
+    <text>{{loadingText}}</text>
+  </view>
+
+  <view class="result-section" wx:if="{{questions.length > 0 && !isProcessing}}">
+    <view class="section-header">
+      <text class="title">AI 切片结果</text>
+      <text class="subtitle">请勾选需要加入组卷的题目</text>
+    </view>
+
+    <scroll-view scroll-y class="question-list">
+      <view 
+        class="q-card {{item.selected ? 'selected' : ''}}" 
+        wx:for="{{questions}}" 
+        wx:key="id" 
+        bindtap="toggleSelect" 
+        data-id="{{item.id}}"
+      >
+        <view class="q-header">
+          <text class="q-type">{{item.type}}</text>
+          <view class="q-tags">
+            <text class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">#{{tag}}</text>
+          </view>
+          <icon type="{{item.selected ? 'success' : 'circle'}}" size="20" color="{{item.selected ? '#00bcd4' : '#ccc'}}"></icon>
+        </view>
+        <view class="q-content">{{item.content}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="bottom-bar" wx:if="{{questions.length > 0 && !isProcessing}}">
+    <view class="stat">
+      已选 <text class="highlight">{{selectedCount}}</text> 题
+    </view>
+    <button class="export-btn {{selectedCount === 0 ? 'disabled' : ''}}" bindtap="exportToWord">
+      生成 Word 组卷
+    </button>
+  </view>
+</view>

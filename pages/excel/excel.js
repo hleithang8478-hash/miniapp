@@ -19,17 +19,34 @@ Page({
   },
 
   // 1. 强力解析
+  // 1. 强力解析 (终极无限制版)
   chooseFiles() {
     wx.chooseMessageFile({
       count: 3,
-      type: 'file',
-      extension: ['.xlsx', '.xls'],
+      type: 'all', // 【关键修改】：不再只选 file，而是允许选全部类型
+      // 【关键修改】：删除了 extension 限制，让微信把所有文件都显示出来
       success: async (res) => {
         this.setData({ loading: true });
         const parsedFiles = [];
         const fs = wx.getFileSystemManager();
         
-        for (let file of res.tempFiles) {
+        // 我们自己来做“保安”，筛选合法的文件
+        let validFiles = res.tempFiles.filter(file => {
+          const name = file.name.toLowerCase();
+          return name.endsWith('.xlsx') || name.endsWith('.xls') || name.endsWith('.csv');
+        });
+
+        if (validFiles.length === 0) {
+          this.setData({ loading: false });
+          wx.showModal({ 
+            title: '文件类型错误', 
+            content: '没有检测到有效的 Excel 文件，请确保选择的是 .xlsx, .xls 或 .csv 结尾的表格文件。', 
+            showCancel: false 
+          });
+          return;
+        }
+
+        for (let file of validFiles) {
           try {
             const buffer = fs.readFileSync(file.path);
             const workbook = XLSX.read(new Uint8Array(buffer), { type: 'array' });
@@ -55,10 +72,16 @@ Page({
         if (parsedFiles.length >= 2) {
           this.setData({ files: parsedFiles, loading: false });
           wx.showToast({ title: '载入成功', icon: 'success' });
+        } else if (parsedFiles.length === 1) {
+          this.setData({ files: parsedFiles, loading: false });
+          wx.showModal({ title: '提示', content: '您只成功解析了 1 个表，智能合并需要至少 2 个表哦，请继续添加。', showCancel: false });
         } else {
           this.setData({ loading: false });
-          wx.showModal({ title: '提示', content: '请至少选择两个表', showCancel: false });
+          wx.showModal({ title: '解析失败', content: '未能成功读取表格内容，请检查文件是否损坏或被加密', showCancel: false });
         }
+      },
+      fail: (err) => {
+        console.log('选择文件失败或取消', err);
       }
     });
   },

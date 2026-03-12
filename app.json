@@ -3,7 +3,10 @@
     "pages/login/login",
     "pages/menu/menu",
     "pages/index/index",
-    "pages/excel/excel"
+    "pages/excel/excel",
+    "pages/slice/slice",
+    "pages/chart/chart",
+    "pages/listen/listen"
   ],
   "window": {
     "navigationBarBackgroundColor": "#ffffff",

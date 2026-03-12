@@ -23,6 +23,24 @@
       <view class="arrow">></view>
     </view>
 
+    <view class="nav-card border-orange" bindtap="navTo" data-url="/pages/index/index?mode=admin">
+      <view class="icon-bg orange">📋</view>
+      <view class="card-content">
+        <text class="c-title">教研总结生成</text>
+        <text class="c-desc">会议记录 / 教研报告标准化</text>
+      </view>
+      <view class="arrow">></view>
+    </view>
+
+    <view class="nav-card border-cyan" bindtap="navTo" data-url="/pages/slice/slice">
+      <view class="icon-bg cyan">✂️</view>
+      <view class="card-content">
+        <text class="c-title">错题智能切片</text>
+        <text class="c-desc">拍照 OCR / AI 标签化 / 一键组卷</text>
+      </view>
+      <view class="arrow">></view>
+    </view>
+
     <view class="nav-card border-purple" bindtap="navTo" data-url="/pages/excel/excel">
       <view class="icon-bg purple">📊</view>
       <view class="card-content">
@@ -32,11 +50,11 @@
       <view class="arrow">></view>
     </view>
 
-    <view class="nav-card border-orange" bindtap="navTo" data-url="/pages/index/index?mode=admin">
-      <view class="icon-bg orange">📋</view>
+    <view class="nav-card border-teal" bindtap="navTo" data-url="/pages/listen/listen">
+      <view class="icon-bg teal">🎙️</view>
       <view class="card-content">
-        <text class="c-title">教研总结生成</text>
-        <text class="c-desc">会议记录 / 教研报告标准化</text>
+        <text class="c-title">听评课一键成稿</text>
+        <text class="c-desc">录音转写 / 自动匹配评价指标</text>
       </view>
       <view class="arrow">></view>
     </view>

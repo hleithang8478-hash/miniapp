@@ -1,0 +1,121 @@
+page {
+  background-color: #f4f5f7;
+}
+
+.container {
+  padding: 30rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+/* 顶部录音区 */
+.record-section {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+}
+
+.time-display {
+  font-size: 80rpx;
+  font-weight: bold;
+  color: #333;
+  font-family: monospace;
+  margin-bottom: 30rpx;
+}
+
+.record-btn {
+  background-color: #009688;
+  color: #fff;
+  padding: 24rpx 60rpx;
+  border-radius: 60rpx;
+  display: flex;
+  align-items: center;
+  gap: 16rpx;
+  font-size: 32rpx;
+  font-weight: bold;
+  transition: all 0.3s;
+  box-shadow: 0 8rpx 20rpx rgba(0, 150, 136, 0.3);
+}
+
+.record-btn.recording {
+  background-color: #f44336;
+  box-shadow: 0 8rpx 20rpx rgba(244, 67, 54, 0.3);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.tips {
+  margin-top: 20rpx;
+  font-size: 24rpx;
+  color: #888;
+}
+
+/* 文本与结果框区域 */
+.box-section {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2rpx solid #eee;
+  padding-bottom: 16rpx;
+}
+
+.box-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.copy-btn {
+  font-size: 26rpx;
+  color: #009688;
+  padding: 6rpx 20rpx;
+  border-radius: 30rpx;
+  background-color: rgba(0, 150, 136, 0.1);
+}
+
+.text-area {
+  width: 100%;
+  height: 200rpx;
+  font-size: 28rpx;
+  color: #555;
+  line-height: 1.6;
+}
+
+.action-btn {
+  background-color: #333;
+  color: #fff;
+  font-size: 30rpx;
+  border-radius: 12rpx;
+  margin-top: 10rpx;
+}
+
+.result-scroll {
+  height: 400rpx;
+}
+
+.result-text {
+  font-size: 30rpx;
+  color: #333;
+  line-height: 1.8;
+  white-space: pre-wrap;
+}

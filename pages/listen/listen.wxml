@@ -1,0 +1,31 @@
+<view class="container">
+  <view class="record-section">
+    <view class="time-display">{{recordTimeStr}}</view>
+    <view class="record-btn {{isRecording ? 'recording' : ''}}" bindtap="toggleRecord">
+      <text class="icon">{{isRecording ? '⏹️' : '🎙️'}}</text>
+      <text>{{isRecording ? '点击结束听课录音' : '点击开始听课录音'}}</text>
+    </view>
+    <text class="tips" wx:if="{{isRecording}}">正在监听课堂，请保持小程序在前台...</text>
+    <text class="tips highlight" wx:if="{{isProcessing}}">{{loadingText}}</text>
+  </view>
+
+  <view class="box-section" wx:if="{{originalText || (!isRecording && !isProcessing && !aiResult)}}">
+    <view class="box-header">
+      <text class="box-title">🎤 课堂原声转写</text>
+    </view>
+    <textarea class="text-area origin-text" value="{{originalText}}" bindinput="onOriginalInput" maxlength="-1" placeholder="录音结束后将在此显示文字，您也可以手动输入..."></textarea>
+    <button class="action-btn" bindtap="doAIPolish" disabled="{{isProcessing}}">
+      {{isProcessing && loadingText.includes('DeepSeek') ? 'DeepSeek 正在撰写评课稿...' : '✨ 一键生成专业评课稿'}}
+    </button>
+  </view>
+
+  <view class="box-section" wx:if="{{aiResult}}">
+    <view class="box-header">
+      <text class="box-title">📋 专业评课报告 (AI 定稿)</text>
+      <text class="copy-btn" bindtap="copyResult">复制报告</text>
+    </view>
+    <scroll-view scroll-y class="result-scroll">
+      <text class="result-text">{{aiResult}}</text>
+    </scroll-view>
+  </view>
+</view>
